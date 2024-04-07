@@ -5,6 +5,7 @@ import {
 	Home,
 	LineChart,
 	Menu,
+	NotebookPen,
 	Package,
 	Package2,
 	Search,
@@ -42,7 +43,7 @@ import {
 	useNavigate
 } from "react-router-dom";
 import NotesBoard from "@/components/Dashboards/NotesBoard"
-import { useEffect } from "react"
+import useNotes from "@/hooks/useNotes"
 const routes = [
 	{
 		path: "/dashboard",
@@ -68,13 +69,14 @@ const routes = [
 
 // { console.log(routes) }
 function Dashboard() {
+	const { addNote } = useNotes();
 	return (
 		<div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
 			<div className="hidden border-r bg-muted/40 md:block">
 				<div className="flex h-full max-h-screen flex-col gap-2">
 					<div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
 						<Button href="/" className="flex items-center gap-2 font-semibold">
-							<Package2 className="h-6 w-6" />
+							<NotebookPen className="h-6 w-6" />
 							<span className="">Noteify</span>
 						</Button>
 
@@ -104,13 +106,14 @@ function Dashboard() {
 									6
 								</Badge>
 							</button> */}
-							<button
+							{/* <button
 								href="#"
+								onClick={addNote}
 								className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
 							>
 								<Package className="h-4 w-4" />
-								Products{" "}
-							</button>
+								Add Notes{" "}
+							</button> */}
 							<Link
 								to="/user/analytics"
 								href="#"
