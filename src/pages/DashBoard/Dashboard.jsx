@@ -34,37 +34,12 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import NotesList from "@/components/Notes/NotesList"
 import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
 	Outlet,
-	Navigate,
 	Link,
-	useNavigate
+
 } from "react-router-dom";
 import NotesBoard from "@/components/Dashboards/NotesBoard"
 import useNotes from "@/hooks/useNotes"
-const routes = [
-	{
-		path: "/dashboard",
-		exact: true,
-		element: () => <NotesBoard />,
-		main: () => <h2>Home</h2>
-	},
-	{
-		path: "/analytics",
-		exact: true,
-		element: () => <div>Analytics</div>,
-		main: () => <h2>Home</h2>
-	},
-	{
-		path: "/5",
-		exact: true,
-		element: () => <NotesBoard />,
-		main: () => <h2>Home</h2>
-	}
-];
-
 
 
 // { console.log(routes) }
@@ -108,10 +83,9 @@ function Dashboard() {
 							</button> */}
 							{/* <button
 								href="#"
-								onClick={addNote}
-								className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+						s-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
 							>
-								<Package className="h-4 w-4" />
+						\		<Package className="h-4 w-4" />
 								Add Notes{" "}
 							</button> */}
 							<Link

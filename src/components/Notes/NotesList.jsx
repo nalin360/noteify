@@ -11,8 +11,8 @@ const NotesList = () => {
   const { notes, addNote, updateNoteText, deleteNote } = useNotes();
 
   return (
-    <div className='relative'>
-      <DndContext>
+    <div className='relative '>
+      {/* <DndContext> */}
         <div className=''>
           {notes.map((note) => (
             <div className='flex flex-row' key={note.id}>
@@ -26,7 +26,7 @@ const NotesList = () => {
           ))}
         </div>
         <Button className='fixed bottom-16 right-16  ' onClick={addNote}><Plus /></Button>
-      </DndContext>
+      {/* </DndContext> */}
     </div>
   );
 };
