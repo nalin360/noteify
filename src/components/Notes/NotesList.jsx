@@ -14,11 +14,11 @@ const NotesList = () => {
     <div className='relative '>
       {/* <DndContext> */}
         <div className=''>
-          {notes.map((note) => (
-            <div className='flex flex-row' key={note.id}>
+          {notes.map((note , index) => (
+            <div className='flex flex-row' key={index}>
               <DraggableNote
                 id={note.id}
-                text={note.text}
+                text={note.data.text.markdown}
                 setText={(text) => updateNoteText(note.id, text)}
               />
               <Button onClick={() => deleteNote(note.id)}><X /></Button>
