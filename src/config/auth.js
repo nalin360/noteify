@@ -21,13 +21,17 @@ export const signInWithEmailPassword = async (email, password) => {
       throw error;
    }
 };
-
+export const getUserUid = async (uid) => {
+   return uid
+}
 export const signInWithGoogle = async () => {
    
    try {
       const result = await signInWithPopup(auth, googleprovider);
       // The signed-in user info.
       const user = result.user;
+      await getUserUid(user.uid)
+      // console.log();
       // This gives you a Google Access Token.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
