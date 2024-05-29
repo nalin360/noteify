@@ -7,25 +7,18 @@ import LoginForm from './pages/Login/LoginForm';
 import Dashboard from './pages/DashBoard/Dashboard';
 import SignupForm from './pages/Login/SignupForm';
 import NotesBoard from './components/Dashboards/NotesBoard';
+import Analytics from './pages/Analytics/Analytics';
 
 function App() {
-  // const { isLoggedIn } = useContext(AuthContext);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/user');
-  //   } 
-  // }, [isLoggedIn]);
-
+ 
   return (
     <>
       <Routes>
         <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/" element={<LoginForm />} />
         <Route path="/user" element={<Dashboard />} >
           <Route path="dashboard" element={<NotesBoard />} />
-          <Route path="analytics" element={<div>Analytics</div>} />
+          
         </Route>
       </Routes>
     </>
