@@ -1,3 +1,4 @@
+import { onAuthStateChanged } from "firebase/auth"
 // Dashboard.jsx
 import {
 	Bell,
@@ -36,15 +37,33 @@ import NotesList from "@/components/Notes/NotesList"
 import {
 	Outlet,
 	Link,
+	useNavigate,
 
 } from "react-router-dom";
 import NotesBoard from "@/components/Dashboards/NotesBoard"
 import useNotes from "@/hooks/useNotes"
-
+import { auth } from "@/config/firebase"
+import { useEffect } from "react"
 
 // { console.log(routes) }
 function Dashboard() {
 	const { addNote } = useNotes();
+	// const history = useHistory();
+	const navigate =  useNavigate();
+	useEffect(() => {
+		
+		const unsubscribe = onAuthStateChanged(auth, (user) => {
+		  if (!user) {
+			// User is not signed in, redirect to login page
+			navigate('/login');
+		  }
+		});
+	
+		
+		return () => unsubscribe();
+	 }, [navigate]); // Depend on history to ensure the effect runs when the component mounts
+	
+	
 	return (
 		<div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
 			<div className="hidden border-r bg-muted/40 md:block">
@@ -71,31 +90,7 @@ function Dashboard() {
 								<Home className="h-4 w-4" />
 								Dashboard
 							</Link>
-							{/* <button
-								href="#"
-								className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-							>
-								<ShoppingCart className="h-4 w-4" />
-								Orders
-								<Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-									6
-								</Badge>
-							</button> */}
-							{/* <button
-								href="#"
-						s-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-							>
-						\		<Package className="h-4 w-4" />
-								Add Notes{" "}
-							</button> */}
-							<Link
-								to="/user/analytics"
-								href="#"
-								className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-							>
-								<LineChart className="h-4 w-4" />
-								Analytics
-							</Link>
+							
 						</nav>
 					</div>
 					<div className="mt-auto p-4">

@@ -9,25 +9,17 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-// import AuthContext from "@/context/AuthContext";
 import { useState } from "react";
 import { signInWithEmailPassword, signInWithGithub, signInWithGoogle } from '@/config/auth';
-// import gitHubSvg from '../../assets/svgs/github-142-svgrepo-com.svg';
 import googleSvg from '../../assets/svgs/googleUpdatedSvg.svg';
 import gitHubSvg from '../../assets/svgs/githubSvgUpdated.svg';
 function LoginForm() {
-	// const [name, setName] = useState('');
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	// const { login } = useContext(AuthContext);
-
-	// const handleSubmit = (event) => {
-	// 	event.preventDefault();
-	// 	console.log(`Name: ${name}, Email: ${email}`);
-	// };
 	const navigate = useNavigate();
-	// const checkUser = () => user ?  navigate('/user') : false;
+
 	const handleAuthWithEamail = async () => {
 
 		const user = await signInWithEmailPassword(email, password)
@@ -97,20 +89,18 @@ function LoginForm() {
 						</span>
 						<img src={googleSvg} alt="Google Logo" width='24px' height='30px' />
 					</Button>
-					<Button variant="outline" onClick={handleAuthWithGithub} 
-					className="w-full bg-slate-900 text-white gap-2">
+					<Button variant="outline" onClick={handleAuthWithGithub}
+						className="w-full bg-slate-900 text-white gap-2">
 						<span>
 							Login with
 						</span>
-						<img src={gitHubSvg}  alt="github Logo" 
-						width='24px' height='30px' />
+						<img src={gitHubSvg} alt="github Logo"
+							width='24px' height='30px' />
 					</Button>
 				</div>
 				<div className="mt-4 text-center text-sm">
 					Don&apos;t have an account?{" "}
-					{/* <button href="#" onClick={OnSignUp} >
-							Sign up
-						</button> */}
+
 					<Link className="underline" to="/signup">Sign Up</Link>
 
 				</div>
